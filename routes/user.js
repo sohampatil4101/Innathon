@@ -3,6 +3,7 @@ const User = require('../models/User')
 const Updateuser = require('../models/user_medi_info/UserInfo')
 const Updateuserdeases = require('../models/user_medi_info/OldMedi_info')
 const Addinfo = require('../models/Addinfo')
+const Routine = require('../models/Routine')
 const router = require('express').Router();
 const {body, validationResult} = require('express-validator')
 const bcrypt = require('bcryptjs');
@@ -143,6 +144,28 @@ router.post('/login', [
             maritalstatus : req.body.maritalstatus,
             profession : req.body.profession,
             about : req.body.about,
+        })
+        
+        success = true
+        res.json({success})
+    
+    
+}    
+    
+    catch (error) {
+        console.log(error.message)
+        res.status(500).send("Some error occured")
+    }
+    
+    
+})
+  router.post('/routine', fetchuser, async (req, res) =>{
+    try {
+
+        const user = await Routine.create({
+            user: req.user.id,
+            mood : req.body.mood,
+            feelsnow : req.body.feelsnow
         })
         
         success = true
