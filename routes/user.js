@@ -141,7 +141,8 @@ router.post('/login', [
             age : req.body.age,
             gender : req.body.gender,
             maritalstatus : req.body.maritalstatus,
-            profession : req.body.profession
+            profession : req.body.profession,
+            about : req.body.about,
         })
         
         success = true
