@@ -218,6 +218,7 @@ router.post('/login', [
             addinfodata,
             routinedata
           };
+          
       
           age = userDetails.addinfodata.age
           gender = userDetails.addinfodata.gender
