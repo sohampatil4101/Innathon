@@ -207,25 +207,27 @@ router.post('/login', [
 
     router.post('/genapi', fetchuser,  async (req, res) => {
         async function run() {
-          console.log(req.user.id)
           console.log(req.user.id);
           
           
           const addinfodata = await Addinfo.findOne({ user: req.user.id }).sort({ _id: -1 });
           const routinedata = await Routine.findOne({ user: req.user.id }).sort({ _id: -1 });
+          console.log(req.user.id);
           
           const userDetails = {
-            addinfodata,
-            routinedata
-          };
-          
-      
-          age = userDetails.addinfodata.age
-          gender = userDetails.addinfodata.gender
-          maritalstatus = userDetails.addinfodata.maritalstatus
+              addinfodata,
+              routinedata
+            };
+            console.log(req.user.id, 123);
+            
+            
+            age = userDetails.addinfodata.age
+            gender = userDetails.addinfodata.gender
+            maritalstatus = userDetails.addinfodata.maritalstatus
           profession = userDetails.addinfodata.profession
           mood = userDetails.routinedata.mood
           feelsnow = userDetails.routinedata.feelsnow
+          console.log(req.user.id, 1235646);
           console.log(age,
             gender,
             maritalstatus,
