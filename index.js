@@ -37,7 +37,7 @@ const Routine = require('./models/Routine')
 const fetchuser = require('./middleware/fetchuser');
 
 
-app.post('/genapi', fetchuser,  async (req, res) => {
+app.post('/api/genapi', fetchuser,  async (req, res) => {
   async function run() {
     console.log(req.user.id)
     console.log(req.user.id);
