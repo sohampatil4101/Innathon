@@ -79,7 +79,7 @@ app.post('/genapi', fetchuser,  async (req, res) => {
     
     Please analyze this information and provide the most accurate emotional classification from the categories listed above.
     Note that i only want respnse as : HAPPY, SAD, ANGRY, ENVY, FRUSTRATED, or NEUTRAL.  no need to specify any reason or anything else 
-    
+    By default the answer will be NEUTRAL if you are not able to classify it in any of the categories.
     `;
     
     
