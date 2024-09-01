@@ -13,6 +13,10 @@ const RoutineSchema = new mongoose.Schema({
     feelsnow:{
         type: String,
         required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 
 
