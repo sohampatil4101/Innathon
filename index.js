@@ -42,6 +42,7 @@ app.post('/api/genapi', fetchuser,  async (req, res) => {
     console.log(req.user.id)
     console.log(req.user.id);
     
+    
     const addinfodata = await Addinfo.findOne({ user: req.user.id }).sort({ _id: -1 });
     const routinedata = await Routine.findOne({ user: req.user.id }).sort({ _id: -1 });
     
