@@ -42,8 +42,8 @@ app.post('/genapi', fetchuser,  async (req, res) => {
     console.log(req.user.id)
     console.log(req.user.id);
     
-    const addinfodata = await Addinfo.findOne({ user: req.user.id }).sort({ createdAt: -1 });
-    const routinedata = await Routine.findOne({ user: req.user.id }).sort({ createdAt: -1 });
+    const addinfodata = await Addinfo.findOne({ user: req.user.id }).sort({ _id: -1 });
+    const routinedata = await Routine.findOne({ user: req.user.id }).sort({ _id: -1 });
     
     const userDetails = {
       addinfodata,
@@ -56,12 +56,17 @@ app.post('/genapi', fetchuser,  async (req, res) => {
     profession = userDetails.addinfodata.profession
     mood = userDetails.routinedata.mood
     feelsnow = userDetails.routinedata.feelsnow
-console.log(userDetails)
+    console.log(age,
+      gender,
+      maritalstatus,
+      profession,
+      mood,
+      feelsnow)
 
     const genAI = new GoogleGenerativeAI('AIzaSyB4EdSEyLCrd8vKWVYN2vB_O0uiSQsn7U8');
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
     const prompt = `
-    I have a set of personal details that include age, gender, marital status, profession, current mood, and feelings right now. Based on this information, please perform a sentiment analysis and classify the emotions into one of the following categories: happy, sad, angry, envy, frustrated, or neutral.
+    I have a set of personal details that include age, gender, marital status, profession, current mood, and feelings right now. Based on this information, please perform a sentiment analysis and classify the emotions into one of the following categories: HAPPY, SAD, ANGRY, ENVY, FRUSTRATED, or NEUTRAL.
     
     Here are the details:
     
@@ -73,6 +78,8 @@ console.log(userDetails)
     - Current Feelings: ${feelsnow}
     
     Please analyze this information and provide the most accurate emotional classification from the categories listed above.
+    Note that i only want respnse as : HAPPY, SAD, ANGRY, ENVY, FRUSTRATED, or NEUTRAL.  no need to specify any reason or anything else 
+    
     `;
     
     
