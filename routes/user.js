@@ -189,7 +189,7 @@ router.post('/login', [
     // Route 3 to get user details
 
 
-    router.post('/getuser', fetchuser,async (req, res) =>{
+    router.get('/getuser', fetchuser,async (req, res) =>{
         try {
             const user = await User.findById({_id: req.user.id}).select("-password")
             res.send(user)
